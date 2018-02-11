@@ -21,6 +21,8 @@ class ButtonBoard extends React.Component {
         this.countEm = this.countEm.bind(this);
         this.totalRoll = this.totalRoll.bind(this);
         this.handleBank = this.handleBank.bind(this);
+        this.handleAlert = this.handleAlert.bind(this);
+        this.handleNewGameSlap = this.handleNewGameSlap.bind(this);
     }
     pigs = [
       {
@@ -64,7 +66,13 @@ class ButtonBoard extends React.Component {
       const leftSelection = document.querySelector('#board-left input:checked');
       const rightSelection = document.querySelector('#board-right input:checked');
 
-      if(leftSelection && rightSelection) {
+      if(leftSelection && rightSelection){
+        if(this.props.state.players.length < 2){
+          this.handleAlert();
+        }
+        if(this.props.state.winner[1] > 0){
+          this.handleNewGameSlap();
+        }
         this.setState({allowAdd: true});
         const leftPig = leftSelection.attributes.title.value;
         const rightPig = rightSelection.attributes.title.value;
@@ -100,6 +108,12 @@ class ButtonBoard extends React.Component {
     handleBank(){
       this.props.bankPoints();
       this.setState({allowBank: false});
+    }
+    handleAlert(e){
+      this.props.toggleModal(e, 'addPlayersModal');
+    }
+    handleNewGameSlap(e){
+      this.props.toggleModal(e, 'newGameSlapModal');
     }
     render(){
         return(

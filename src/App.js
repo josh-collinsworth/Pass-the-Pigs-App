@@ -201,10 +201,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Modals toggleModal={this.toggleModal} newPlayerSubmit={this.newPlayerSubmit} endGame={this.endGame} winner={this.state.winner} newGame={this.newGame} neverMind={this.neverMind} players={this.state.players}/>
+        <Modals toggleModal={this.toggleModal} newPlayerSubmit={this.newPlayerSubmit} endGame={this.endGame} state={this.state} newGame={this.newGame} neverMind={this.neverMind} addPlayer={this.addPlayer}/>
         <AppHeader players={this.state.players} toggleModal={this.toggleModal} newGame={this.newGame}/>
         <Sidebar players={this.state.players} nextPlayer={this.nextPlayer} toggleModal={this.toggleModal}/>
-        <ButtonBoard rolls={this.state.scoringRolls} addRoll={this.addRoll} diceCombos={this.state.diceCombos } bankPoints={this.bankPoints} pigOut={this.pigOut} makinBacon={this.makinBacon}/>
+        <ButtonBoard state={this.state} addRoll={this.addRoll} bankPoints={this.bankPoints} pigOut={this.pigOut} makinBacon={this.makinBacon} toggleModal={this.toggleModal}/>
         <Log />
       </div>
     );
