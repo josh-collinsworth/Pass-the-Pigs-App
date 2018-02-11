@@ -52,7 +52,7 @@
     content: '';
     left: -2rem;
     z-index: -1;
-    transition: all .4s ease;
+    transition: var(--transition);
 }
 
 #Scoreboard tr[data-active=true] td {

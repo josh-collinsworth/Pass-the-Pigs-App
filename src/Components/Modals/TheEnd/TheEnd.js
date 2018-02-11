@@ -11,7 +11,6 @@ class NewPlayer extends React.Component {
         if (e.keyCode === 27) this.props.toggleModal(e, 'theEndModal');
     }
     handleToggle(e){
-        //console.log('Handling toggle!');
         this.props.toggleModal(e, 'theEndModal');
     }
     handleSubmit(e){

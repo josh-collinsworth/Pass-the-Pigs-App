@@ -6,7 +6,7 @@ class Sidebar extends React.Component {
     render(){
         return(
         	<aside className="App-sidebar">
-        		<Scoreboard players={this.props.players} toggleModal={this.props.toggleModal} changePlayerName={this.props.changePlayerName}/>
+        		<Scoreboard players={this.props.players} toggleModal={this.props.toggleModal}/>
         	</aside>
         );
     }

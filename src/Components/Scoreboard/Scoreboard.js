@@ -7,7 +7,6 @@ class Scoreboard extends React.Component {
         this.handleToggle = this.handleToggle.bind(this);
     }
     handleToggle(e){
-        console.log('Handling toggle!');
         this.props.toggleModal(e, 'newPlayerModal');
     }
     render(){
@@ -32,7 +31,7 @@ class Scoreboard extends React.Component {
                         this.props.players.map(player => {
                             return (
                                 <tr data-active={player.active} key={player.id}>
-                                    <td data-playerid={player.id} onInput={this.props.changePlayerName}><strong>{player.name}</strong></td>
+                                    <td data-playerid={player.id}><strong>{player.name}</strong></td>
                                     <td>{player.banked}</td>
                                     <td>{player.turn ? ` + ${player.turn}` : ''}</td>
                                 </tr>

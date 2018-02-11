@@ -1,30 +1,29 @@
 import React from 'react';
+import Modal from '../Modal';
 
-class NewPlayer extends React.Component {
+class BeginTheEnd extends Modal {
 	constructor(props){
 		super(props);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.state = {
+            id: 'beginTheEndModal'
+        }
         this.handleToggle = this.handleToggle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 	}
-    handleKeyDown(e){
-        if (e.keyCode === 27) this.props.toggleModal(e, 'beginTheEndModal');
-    }
-    handleToggle(e){
-        console.log('Handling toggle!');
-        this.props.toggleModal(e, 'beginTheEndModal');
-    }
     handleSubmit(e){
         this.props.toggleModal(e, 'beginTheEndModal');
     }
     render(){
         return(
     		<form className="modal-box" onSubmit={this.handleSubmit}>
-    			<p>Final round! Every other player gets one last roll!</p>
+    			{this.props.players.map(player => {
+                    if (!player.ender){ return ''; }
+                    return <p><strong>{player.name} has banked {player.banked} and kicked off the final round!</strong> Every other player gets one last roll to try to beat them!</p>
+                })} 
     			<input type="submit" value="OK" onKeyDown={this.handleKeyDown}/>
     		</form>
         );
     }
 }
 
-export default NewPlayer;
+export default BeginTheEnd;

@@ -6,6 +6,7 @@
   --darkgray: #53565a;
   --lightgray: #a7a8aa;
   --font: 'Lato', 'Bitter', sans-serif;
+  --transition: .6s cubic-bezier(0.85,-0.28, 0.06, 1.31);
 }
 
 * {
@@ -22,11 +23,13 @@
   opacity: 0!important;
   position: fixed!important;
   top: -100vh!important;
+  z-index: 10;
+  transition: var(--transition);
 }
 
 .disabled {
   background: var(--lightgray)!important;
-  opacity: .7;
+  opacity: .5;
   cursor: initial;
 }
 

@@ -5,10 +5,6 @@ import trotter from '../../images/trotter.jpg';
 import snouter from '../../images/snouter.jpg';
 import razorback from '../../images/razorback.jpg';
 import leaningJowler from '../../images/leaning-jowler.jpg';
-//import sider from '../../images/sider.jpg';
-// import doubleDots from '../../images/double-dots.jpg';
-// import doubleNoDots from '../../images/double-no-dots.jpg';
-//import eitherSide from '../../images/either-side.jpg';
 import dotUp from '../../images/dot-up.jpg';
 import dotDown from '../../images/dot-down.jpg';
 
@@ -18,11 +14,13 @@ class ButtonBoard extends React.Component {
         super(props);
         this.state = {
           allowAdd: false,
+          allowBank: false,
           addText: '',
           points: ''
         }
         this.countEm = this.countEm.bind(this);
         this.totalRoll = this.totalRoll.bind(this);
+        this.handleBank = this.handleBank.bind(this);
     }
     pigs = [
       {
@@ -73,9 +71,6 @@ class ButtonBoard extends React.Component {
         const leftPigPoints = parseInt(leftSelection.attributes.value.value, 10);
         const rightPigPoints = parseInt(rightSelection.attributes.value.value, 10);
 
-        // console.log(leftPig + ': ' + leftPigPoints);
-        // console.log(rightPig + ': ' + rightPigPoints);
-
         if(leftPig === rightPig && leftPigPoints !== 1){
           this.setState({addText: 'Double ' + leftPig, points: (leftPigPoints + rightPigPoints) * 2});
         } else if (leftPigPoints > 1 && rightPigPoints > 1) {
@@ -94,10 +89,17 @@ class ButtonBoard extends React.Component {
       }
     }
     countEm(){
+      console.log(this.state.points);
       this.props.addRoll(this.state.points);
-      this.setState({allowAdd: false, addText: '', points: ''});
+      const bombCheck = this.state.points;
+      this.setState({allowAdd: false, addText: '', points: '', allowBank: true});
+      if(bombCheck === '💣'){ this.setState({allowBank: false})}
       const inputs = document.querySelectorAll('input[type="radio"]');
       inputs.forEach(input => input.checked = false);
+    }
+    handleBank(){
+      this.props.bankPoints();
+      this.setState({allowBank: false});
     }
     render(){
         return(
@@ -113,7 +115,7 @@ class ButtonBoard extends React.Component {
                   })}
                 </div>
                 <button id="makinBacon" onClick={this.props.makinBacon}><span role="img" aria-label="fixme">😱🥓 Makin' Bacon!</span></button>
-                <button id="bank" onClick={this.props.bankPoints}><span role="img" aria-label="fixme">🏦 Bank!</span></button>
+                <button id="bank" onClick={this.state.allowBank ? this.handleBank : this.totalRoll} className={this.state.allowBank ? '' : 'disabled'}><span role="img" aria-label="fixme">🏦 Bank!</span></button>
                 <button id="countEm" onClick={this.state.allowAdd ? this.countEm : this.totalRoll} className={this.state.allowAdd ? '' : 'disabled'}>
                   <span className="roll-announcement">{this.state.addText ? this.state.addText : '(Enter the roll)'}</span>
                   <span className="button-highlight">{this.state.points ? this.state.points : ''}</span>
