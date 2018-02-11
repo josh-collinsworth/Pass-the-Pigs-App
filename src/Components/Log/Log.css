@@ -1,0 +1,17 @@
+#Log {
+	grid-row: 3/4;
+    grid-column: 1 / -1;
+    background: #53565a;
+    color: #fff;
+    font-size: .8rem;
+    overflow: auto;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0 1rem;
+}
+
+@media (max-width: 760px){
+	#Log {
+	grid-row: 4/5;
+	}
+}

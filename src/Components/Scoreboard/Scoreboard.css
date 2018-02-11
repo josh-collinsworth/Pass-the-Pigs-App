@@ -1,0 +1,71 @@
+#Scoreboard {
+    grid-column: 2/3;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#Scoreboard table {
+    width: 100%;
+    text-align: left;
+    font-size: calc(.7em + .5vw);
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+#Scoreboard table tr {
+    border-bottom: 1px solid var(--darkgray);
+}
+
+#Scoreboard table tr td {
+    width: 25%;
+    padding: .5em 0;
+}
+
+#Scoreboard table tr td:first-of-type {
+    width: 50%;
+}
+
+#Scoreboard tr[data-active=true] {
+    /*background-color: var(--yellow);*/
+    font-size: 1.2em;
+    position: sticky;
+    top: 0;
+    padding: 0;
+    width: 200%;
+    display: flex;
+    align-items: center;
+    padding: 0.62em 0;
+}
+
+#Scoreboard tr[data-active=true]:after {
+    width: 100%;
+    background: var(--yellow);
+    /*background: #bfd4de;*/
+    height: calc(1em + 1.4em);
+    width: calc(100% + 4rem);
+    position: absolute;
+    content: '';
+    left: -2rem;
+    z-index: -1;
+    transition: all .4s ease;
+}
+
+#Scoreboard tr[data-active=true] td {
+    padding: 0;
+}
+
+#Scoreboard thead p {
+    margin: 0;
+    font-style: italic;
+}
+
+@media (max-width: 760px){
+    #Scoreboard {
+        grid-column: 1 / -1;
+    }
+}

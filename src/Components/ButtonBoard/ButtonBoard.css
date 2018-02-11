@@ -1,0 +1,64 @@
+#ButtonBoard {
+	grid-column: 2/3;
+	padding: 2em;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: repeat(6, 1fr);
+	grid-gap: 1vw;
+	height: auto;
+}
+
+#board-left, #board-right {
+	grid-row: span 6;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 1vw;
+}
+
+#board-left {
+	grid-column: 1 / 2;
+}
+
+#board-right {
+	grid-column: 2 / 3;
+}
+
+#ButtonBoard #bank, #ButtonBoard #makinBacon, #ButtonBoard #pigOut, #ButtonBoard #countEm {
+	background: var(--blue);
+	border-color: var(--blue);
+	color: #fff;
+	font-weight: bold;
+	justify-content: center;
+}
+
+#ButtonBoard #countEm, #ButtonBoard #pigOut {
+	grid-row: span 3;
+}
+
+#ButtonBoard #bank {
+	grid-row: span 2;
+}
+
+button span {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+button span.roll-announcement {
+    font-weight: normal;
+}
+
+.button-highlight {
+    margin-top: 0.2em;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 1.8em;
+}
+
+@media (max-width: 760px){
+	#ButtonBoard {
+		grid-column: 1 / -1;
+	}
+}

@@ -1,0 +1,13 @@
+.App-sidebar {
+	grid-column: 1/2;
+	grid-row: 2/3;
+	background-color: var(--blue);
+	padding: 2em;
+}
+
+
+@media (max-width: 760px){
+	.App-sidebar {
+		grid-column: 1 / -1;
+	}
+}

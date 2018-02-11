@@ -1,0 +1,100 @@
+@import 'https://fonts.googleapis.com/css?family=Lato:400,400i,900,900i';
+
+:root {
+  --blue: #7BA7BC;
+  --yellow: #ffd100;
+  --darkgray: #53565a;
+  --lightgray: #a7a8aa;
+  --font: 'Lato', 'Bitter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*:focus {
+    outline: var(--yellow) auto 13px;
+}
+
+.hidden {
+  opacity: 0!important;
+  position: fixed!important;
+  top: -100vh!important;
+}
+
+.disabled {
+  background: var(--lightgray)!important;
+  opacity: .7;
+  cursor: initial;
+}
+
+.App {
+  text-align: center;
+  font-family: var(--font);
+}
+
+body, .App-header, .App {
+  display: grid;
+  grid-template-columns: minmax(min-content, 3fr) minmax(400px, 5fr);
+  width: 100%;
+}
+
+#root, .App, .App-header {
+  grid-column: 1 / -1;
+}
+
+.App {
+  grid-template-rows: 80px 1fr 80px;
+}
+
+#root, .App, body {
+  height: 100vh;
+}
+.App-header {
+  background-color: #53565a;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--yellow);
+  grid-column: 1 / -1;
+}
+
+.App-header h1 {
+  grid-column: 1/2;
+  text-align: left;
+  margin: 0;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+button, input[type=submit] {
+  font-family: var(--font);
+  font-size: 1.1em;
+  display: block;
+  border: 2px solid var(--lightgray);
+  border-radius: 6px;
+  width: 100;
+  padding: .3em .5em;
+}
+
+@media (max-width: 760px){
+  body, .App-header, .App {
+    grid-template-columns: 1fr;
+  }
+  #root, .App, body {
+    height: auto;
+  }
+  .App {
+    grid-template-rows: 80px auto auto 80px;
+  }
+}

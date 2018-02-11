@@ -1,0 +1,27 @@
+.App-header {
+	position: sticky;
+	top: 0;
+	z-index: 8;
+}
+
+.App-header button {
+	background: var(--blue);
+	color: #fff;
+	border: none;
+	padding: .5em;
+	font-weight: bold;
+}
+
+.App-header div {
+	display: flex;
+}
+
+.App-header div button {
+	margin-left: 1em;
+}
+
+.App-header h1 small {
+	font-weight: normal;
+	font-size: .8em;
+	font-style: italic;
+}
