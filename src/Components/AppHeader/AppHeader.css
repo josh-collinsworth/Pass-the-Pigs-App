@@ -2,6 +2,14 @@
 	position: sticky;
 	top: 0;
 	z-index: 8;
+	background-color: #53565a;
+	padding: 0 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+	color: var(--yellow);
+	grid-column: 1 / -1;
 }
 
 .App-header button {
@@ -20,8 +28,41 @@
 	margin-left: 1em;
 }
 
+.App-header h1 {
+  grid-column: 1/2;
+  text-align: left;
+  margin: 0;
+}
+
 .App-header h1 small {
 	font-weight: normal;
 	font-size: .8em;
 	font-style: italic;
 }
+
+#mobile-slider {
+	display: none;
+}
+
+@media (max-width: 768px){
+	.App-header {
+		padding: 0 1em;
+	}
+	.App-header div button {
+		margin-left: 0;
+		font-size: .8em;
+	}
+	#mobile-slider {
+		position: absolute;
+		left: -100vw;
+	}
+
+	#mobile-slider + label:before {
+		content: '▶️';
+	}
+
+	#mobile-slider:checked + label:before {
+		content: '◀️️';
+	}
+}
+

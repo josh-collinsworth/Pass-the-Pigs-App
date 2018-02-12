@@ -2,7 +2,15 @@ A fairly simple (to use) app for scorekeeping with the dice game "Pass the Pigs.
 
 I own absolutely no claim or copyright to Pass the Pigs. That's all Hasbro, Winning Moves and/or David Moffat Enterprises, as far as I know. I just made the app. Thus, I can't really license this, so just don't use this without giving credit, please.
 
-TODO: make the logs not suck. Maybe add an undo button, and the ability to rename players. I'd also really love to get side-by-side scoreboard/button board swiping going on mobile.
+TODO: 
+
+-Make the logs not suck
+-Add error checking/sanitation and truncation to user input
+-Fix the post-game re-win
+-Fix single player 
+-Maybe add an undo button
+-Add ability to rename players. 
+-I'd also really love to get side-by-side scoreboard/button board swiping going on mobile.
 
 Here's the boilerplate mumbo jumbo:
 

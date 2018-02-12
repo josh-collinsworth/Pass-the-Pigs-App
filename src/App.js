@@ -105,6 +105,7 @@ class App extends Component {
         rollers[i].active = false;
         if (i === (rollers.length - 1) ) {
           rollers[0].active = true
+          this.logUpdate('\'s turn!')
           this.updateScoreboard(rollers);
           if(rollers[0].active && rollers[0].ender){
             this.updateScoreboard(rollers);
@@ -113,6 +114,7 @@ class App extends Component {
           }
         } else {
           rollers[i+1].active = true;
+          this.logUpdate('\'s turn!')
           this.updateScoreboard(rollers);
           if(rollers[i+1].active && rollers[i+1].ender){
             this.toggleModal('', 'theEndModal', this.endGame());
@@ -148,23 +150,27 @@ class App extends Component {
     })
   }
   bankPoints(){
+    this.logUpdate(' banked!')
     let rollers = this.state.players;
     for(var roller of rollers) {
       if( roller.active ){ 
         roller.banked += roller.turn; 
         roller.turn = 0;
         if(roller.banked >= 100 && this.state.finalRound === false){
+          this.logUpdate(' banked 100+ and began the endgame!')
           this.toggleModal('', 'beginTheEndModal');
           roller.ender = true;
           this.setState({finalRound: true});
         }
-        this.nextPlayer();
+        // this.logUpdate();
         this.updateScoreboard(rollers);
+        this.nextPlayer();
         break;
       }
     }
   }
   pigOut(){
+    this.logUpdate(' pig-out')
     let rollers = this.state.players;
     rollers.forEach(roller => {
       if (roller.active){
@@ -186,17 +192,22 @@ class App extends Component {
     this.nextPlayer();
   }
   updateScoreboard(obj){
-    this.logUpdate();
     this.setState({ players: obj });
+    this.logUpdate();
   }
-  logUpdate(){
+  logUpdate(message){
     const Log = document.getElementById('Log');
     const rollers = this.state.players;
     rollers.forEach(player => {
       if(player.active){
-        Log.innerHTML += `${player.name} – banked: ${player.banked}; turn: ${player.turn}<br>`; 
+        if(message){
+          Log.innerHTML += `----- ${player.name}${message} -----<br>`;
+        } else {
+          Log.innerHTML += `${player.name} – banked: ${player.banked}; turn: ${player.turn}<br>`; 
+        }
       }
     })
+    Log.scrollTop = Log.scrollHeight;
   }
   render() {
     return (

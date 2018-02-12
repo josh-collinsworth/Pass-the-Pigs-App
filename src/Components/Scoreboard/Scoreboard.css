@@ -31,7 +31,6 @@
 }
 
 #Scoreboard tr[data-active=true] {
-    /*background-color: var(--yellow);*/
     font-size: 1.2em;
     position: sticky;
     top: 0;
@@ -45,7 +44,6 @@
 #Scoreboard tr[data-active=true]:after {
     width: 100%;
     background: var(--yellow);
-    /*background: #bfd4de;*/
     height: calc(1em + 1.4em);
     width: calc(100% + 4rem);
     position: absolute;
@@ -64,8 +62,12 @@
     font-style: italic;
 }
 
-@media (max-width: 760px){
+@media (max-width: 768px){
     #Scoreboard {
         grid-column: 1 / -1;
+    }
+    #Scoreboard tr[data-active=true]:after {
+        width: calc(100% + 2rem);
+        left: -1rem;
     }
 }

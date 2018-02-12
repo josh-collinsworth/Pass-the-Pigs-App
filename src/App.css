@@ -7,6 +7,7 @@
   --lightgray: #a7a8aa;
   --font: 'Lato', 'Bitter', sans-serif;
   --transition: .6s cubic-bezier(0.85,-0.28, 0.06, 1.31);
+  --radius: 6px;
 }
 
 * {
@@ -33,6 +34,10 @@
   cursor: initial;
 }
 
+.slide-in {
+  left: 0!important;
+}
+
 .App {
   text-align: center;
   font-family: var(--font);
@@ -55,22 +60,6 @@ body, .App-header, .App {
 #root, .App, body {
   height: 100vh;
 }
-.App-header {
-  background-color: #53565a;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  color: var(--yellow);
-  grid-column: 1 / -1;
-}
-
-.App-header h1 {
-  grid-column: 1/2;
-  text-align: left;
-  margin: 0;
-}
 
 .App-title {
   font-size: 1.5em;
@@ -85,12 +74,16 @@ button, input[type=submit] {
   font-size: 1.1em;
   display: block;
   border: 2px solid var(--lightgray);
-  border-radius: 6px;
+  border-radius: var(--radius);
   width: 100;
   padding: .3em .5em;
 }
 
-@media (max-width: 760px){
+input {
+  border-radius: var(--radius);
+}
+
+@media (max-width: 768px){
   body, .App-header, .App {
     grid-template-columns: 1fr;
   }
@@ -98,6 +91,9 @@ button, input[type=submit] {
     height: auto;
   }
   .App {
-    grid-template-rows: 80px auto auto 80px;
+      grid-template-rows: 80px auto 80px;
+      width: 100vw;
+      height: 100vh;
+      grid-template-columns: 1fr;
   }
 }

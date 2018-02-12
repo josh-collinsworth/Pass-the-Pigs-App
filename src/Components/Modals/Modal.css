@@ -6,11 +6,11 @@
 
 .modal {
 	position: fixed;
-	left: calc(50% - 190px);
-	top: calc(50% - 180px);
+	left: calc(50vw - 190px);
+	top: calc(30vh);
 	z-index: 10;
 	width: 380px;
-	height: 360px;
+	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -36,7 +36,7 @@
 	font-size: calc(.8em + 1vw);
 	background: rgba(255,255,255,.9);
 	border: 2px solid var(--lightgray);
-	border-radius: 4px;
+	border-radius: var(--radius);
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -66,6 +66,10 @@
 	line-height: 1;
 	margin-top: .5em;
 	flex: 1 1 100%;
+}
+
+.modal label {
+	margin-bottom: .2em;
 }
 
 .button-group {

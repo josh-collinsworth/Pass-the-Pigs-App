@@ -1,21 +1,18 @@
 import React from 'react';
+import Modal from '../Modal';
+
 import './NewPlayer.css';
 
-class NewPlayer extends React.Component {
+class NewPlayer extends Modal {
 	constructor(props){
 		super(props);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.handleToggle = this.handleToggle.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            id: 'newPlayerModal'
+        }
 	}
-    handleKeyDown(e){
-        if (e.keyCode === 27) this.props.toggleModal(e, 'newPlayerModal');
-    }
-    handleToggle(e){
-        this.props.toggleModal(e, 'newPlayerModal');
-    }
     handleSubmit(e){
         this.props.newPlayerSubmit(e, 'newPlayerModal');
+        this.props.toggleModal(e, 'addAnotherPlayerModal');
     }
     render(){
         return(

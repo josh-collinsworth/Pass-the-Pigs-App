@@ -6,6 +6,7 @@ import NewGame from './NewGame/NewGame';
 import NewPlayer from './NewPlayer/NewPlayer';
 import AddPlayers from './AddPlayers/AddPlayers';
 import NewGameSlap from './NewGameSlap/NewGameSlap';
+import AddAnotherPlayer from './AddAnotherPlayer/AddAnotherPlayer';
 
 
 class Modals extends React.Component {
@@ -30,6 +31,9 @@ class Modals extends React.Component {
 		        </Modal>
 		        <Modal id="newGameSlapModal">
 		          <NewGameSlap toggleModal={this.props.toggleModal} newGame={this.props.newGame} neverMind={this.props.neverMind} addPlayer={this.props.addPlayer}/> 
+		        </Modal>
+		        <Modal id="addAnotherPlayerModal">
+		          <AddAnotherPlayer toggleModal={this.props.toggleModal} newGame={this.props.newGame} neverMind={this.props.neverMind} addPlayer={this.props.addPlayer}/> 
 		        </Modal>
 		    </div>
         );

@@ -7,12 +7,7 @@ class BeginTheEnd extends Modal {
         this.state = {
             id: 'beginTheEndModal'
         }
-        this.handleToggle = this.handleToggle.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
 	}
-    handleSubmit(e){
-        this.props.toggleModal(e, 'beginTheEndModal');
-    }
     render(){
         return(
     		<form className="modal-box" onSubmit={this.handleSubmit}>

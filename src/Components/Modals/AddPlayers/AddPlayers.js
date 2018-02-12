@@ -7,11 +7,7 @@ class AddPlayers extends Modal {
         this.state = {
             id: 'addPlayersModal'
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
-    }
-    handleSubmit(e){
-        this.props.toggleModal(e, 'addPlayersModal');
     }
     handleAdd(e){
         this.props.toggleModal(e, 'addPlayersModal');

@@ -6,6 +6,7 @@
 	grid-template-rows: repeat(6, 1fr);
 	grid-gap: 1vw;
 	height: auto;
+	max-height: calc(100vh - 160px);
 }
 
 #board-left, #board-right {
@@ -57,8 +58,10 @@ button span.roll-announcement {
     font-size: 1.8em;
 }
 
-@media (max-width: 760px){
+@media (max-width: 768px){
 	#ButtonBoard {
-		grid-column: 1 / -1;
+	    grid-column: 1 / -1;
+	    padding: 1em;
+	    grid-gap: 12px;
 	}
 }
