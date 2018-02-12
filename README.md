@@ -4,13 +4,11 @@ I own absolutely no claim or copyright to Pass the Pigs. That's all Hasbro, Winn
 
 TODO: 
 
--Make the logs not suck
 -Add error checking/sanitation and truncation to user input
 -Fix the post-game re-win
 -Fix single player 
 -Maybe add an undo button
 -Add ability to rename players. 
--I'd also really love to get side-by-side scoreboard/button board swiping going on mobile.
 
 Here's the boilerplate mumbo jumbo:
 
