@@ -17,7 +17,7 @@
 }
 
 *:focus {
-    outline: var(--yellow) auto 13px;
+    outline: var(--yellow) auto 6px;
 }
 
 .hidden {

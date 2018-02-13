@@ -14,7 +14,7 @@
 	    grid-row: 2/-1;
 	    position: absolute;
 	    width: 100vw;
-	    height: calc(100vh - 80px);
+	    min-height: calc(100vh - 80px);
 	    z-index: 7;
 	    top: 80px;
 	    left: -100vw;

@@ -13,6 +13,7 @@ class App extends Component {
         finalRound: false,
         winner: ['', 0],
         players: [],
+        round: 1
       }
       this.nextPlayer = this.nextPlayer.bind(this);
       this.addRoll = this.addRoll.bind(this);
@@ -28,7 +29,9 @@ class App extends Component {
   }
   newGame(e){
     e.preventDefault();
-    this.setState({players: [], finalRound: false, winner: ['', 0]});
+    this.setState({players: [], finalRound: false, winner: ['', 0], round: 1});
+    const Sidebar = document.querySelector('.App-sidebar');
+    Sidebar.classList.add('slide-in');
   }
 
   neverMind(e){
@@ -42,10 +45,12 @@ class App extends Component {
     const showing = document.querySelectorAll('.modal');
     const curtain = document.getElementById('curtain');
     const modalHolder = document.getElementById('modal-holder');
+    const countEm = document.getElementById('countEm');
 
     showing.forEach(element => { element.classList.add('hidden')});
     curtain.classList.add('hidden');
     modalHolder.classList.add('hidden');
+    countEm.focus();
   }
 
   newPlayerSubmit(e, modal){
@@ -89,7 +94,7 @@ class App extends Component {
     showElements.forEach(element =>{
       if (element.classList.contains('hidden')){
         element.classList.remove('hidden');
-        const modalInput = document.querySelector(`#${modal} input`);
+        const modalInput = (modal === 'addAnotherPlayerModal') ? document.querySelector(`#${modal} button`) : document.querySelector(`#${modal} input`);
         modalInput.focus();
       } else {
         element.classList.add('hidden');
@@ -104,10 +109,13 @@ class App extends Component {
       if(rollers[i].active){
         rollers[i].active = false;
         if (i === (rollers.length - 1) ) {
-          rollers[0].active = true
+          rollers[0].active = true;
+          this.logUpdate(` begins round ${this.state.round + 1}`);
+          this.setState({round: this.state.round + 1});
           this.logUpdate('\'s turn!')
-          this.updateScoreboard(rollers);
+          this.updateScoreboard(rollers); 
           if(rollers[0].active && rollers[0].ender){
+            this.logUpdate(' WINS!');
             this.updateScoreboard(rollers);
             this.toggleModal('', 'theEndModal', this.endGame());
             return;
@@ -117,6 +125,8 @@ class App extends Component {
           this.logUpdate('\'s turn!')
           this.updateScoreboard(rollers);
           if(rollers[i+1].active && rollers[i+1].ender){
+            this.logUpdate(' WINS!');            
+            //No updateScoreboard needed here? ¯\_(ツ)_/¯
             this.toggleModal('', 'theEndModal', this.endGame());
             return;
           } 
@@ -201,9 +211,9 @@ class App extends Component {
     rollers.forEach(player => {
       if(player.active){
         if(message){
-          Log.innerHTML += `----- ${player.name}${message} -----<br>`;
+          Log.innerHTML += `========== ${player.name}${message} ==========<br>`;
         } else {
-          Log.innerHTML += `${player.name} – banked: ${player.banked}; turn: ${player.turn}<br>`; 
+          Log.innerHTML += `${player.name} --- banked: ${player.banked} | turn: ${player.turn}<br>`; 
         }
       }
     })

@@ -10,7 +10,7 @@
 #Scoreboard table {
     width: 100%;
     text-align: left;
-    font-size: calc(.7em + .5vw);
+    font-size: calc(.7em + .8vw);
     border-collapse: collapse;
     margin-bottom: 1rem;
     position: relative;
@@ -69,5 +69,8 @@
     #Scoreboard tr[data-active=true]:after {
         width: calc(100% + 2rem);
         left: -1rem;
+    }
+    #Scoreboard table {
+        font-size: calc(.7em + 1vw);
     }
 }
