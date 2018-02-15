@@ -7,7 +7,7 @@
 }
 
 
-@media (max-width: 760px){
+@media (max-width: 768px){
 	.App-sidebar {
 		padding: 1em;
 	    grid-column: 1 / 2;

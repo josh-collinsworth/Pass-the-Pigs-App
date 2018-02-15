@@ -1,12 +1,12 @@
 import React from 'react';
 import './ButtonBoard.css';
 import ScoreButton from '../ScoreButton/ScoreButton';
-import trotter from '../../images/trotter.jpg';
-import snouter from '../../images/snouter.jpg';
-import razorback from '../../images/razorback.jpg';
-import leaningJowler from '../../images/leaning-jowler.jpg';
-import dotUp from '../../images/dot-up.jpg';
-import dotDown from '../../images/dot-down.jpg';
+import trotter from '../../images/trotter.png';
+import snouter from '../../images/snouter.png';
+import razorback from '../../images/razorback.png';
+import leaningJowler from '../../images/leaning-jowler.png';
+import dotUp from '../../images/dot-up.png';
+import dotDown from '../../images/dot-down.png';
 
 
 class ButtonBoard extends React.Component {

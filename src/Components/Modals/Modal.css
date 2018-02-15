@@ -6,10 +6,10 @@
 
 .modal {
 	position: fixed;
-	left: calc(50vw - 190px);
+	left: calc(50vw - 230px);
 	top: calc(30vh);
 	z-index: 10;
-	width: 380px;
+	width: 460px;
 	height: auto;
 	display: flex;
 	justify-content: center;
@@ -86,7 +86,11 @@
 	margin-right: 1em;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
+	.modal {
+		left: 5vw;
+		width: 90vw;
+	}
 	.modal button, .modal input[type=submit]{
 		font-size: 1em;
 	}

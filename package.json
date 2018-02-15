@@ -1,6 +1,7 @@
 {
   "name": "pass-the-pigs",
-  "version": "0.1.0",
+  "version": "1.0.1",
+  "homepage": "https://passthepigs.now.sh",
   "private": true,
   "dependencies": {
     "react": "^16.2.0",
