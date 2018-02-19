@@ -9,6 +9,10 @@
 	max-height: calc(100vh - 160px);
 }
 
+#ButtonBoard div {
+	position: relative;
+}
+
 #board-left, #board-right {
 	grid-row: span 6;
     display: grid;
@@ -24,7 +28,39 @@
 	grid-column: 2 / 3;
 }
 
-#ButtonBoard #bank, #ButtonBoard #makinBacon, #ButtonBoard #pigOut, #ButtonBoard #countEm {
+#board-right:before {
+    position: absolute;
+	height: 88.4%;
+    top: 5.8%;
+    left: -.5vw;
+    content: '';
+    border-left: 1px solid #eee;
+}
+
+#ButtonBoard input[type=radio]:checked + label:after {
+	transition: var(--transition);
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid #eee;
+    right: -.5vw;
+    top: calc(50% - 8px);
+}
+
+#ButtonBoard #board-right input[type=radio]:checked + label:after {
+	border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-left: 8px solid #eee;
+    left: -.4vw;
+}
+
+#ButtonBoard #bank, #ButtonBoard #makinBacon, #ButtonBoard #countEm {
 	background: var(--blue);
 	border-color: var(--blue);
 	color: #fff;
@@ -32,12 +68,18 @@
 	justify-content: center;
 }
 
-#ButtonBoard #countEm, #ButtonBoard #pigOut {
-	grid-row: span 3;
+#ButtonBoard #countEm {
+	grid-row: 2 / -1;
+	grid-column: 3 / 4;
+}
+
+#ButtonBoard #countEm.roll-again {
+	grid-row: 4 / -1;
 }
 
 #ButtonBoard #bank {
-	grid-row: span 2;
+	grid-row: 2 / span 2;
+	grid-column: 3 / 4;
 }
 
 button span {
@@ -63,5 +105,15 @@ button span.roll-announcement {
 	    grid-column: 1 / -1;
 	    padding: 1em;
 	    grid-gap: 12px;
+	}
+	#board-right:before {
+	    left: -6px;
+	}
+	#ButtonBoard input[type=radio]:checked + label:after {
+	    right: -6px;
+	    top: calc(50% - 8px);
+	}
+	#ButtonBoard #board-right input[type=radio]:checked + label:after {
+	    left: -5px;
 	}
 }

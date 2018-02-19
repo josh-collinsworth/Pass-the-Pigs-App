@@ -23,14 +23,15 @@ class ButtonBoard extends React.Component {
         this.handleBank = this.handleBank.bind(this);
         this.handleAlert = this.handleAlert.bind(this);
         this.handleNewGameSlap = this.handleNewGameSlap.bind(this);
+        this.clearRoll = this.clearRoll.bind(this);
     }
     pigs = [
       {
-        name: 'Trotter',
-        points: 5,
-        image: trotter,
-        key: 1
-      },  
+        name: 'Leaning Jowler',
+        points: 15,
+        image: leaningJowler,
+        key: 4
+      },
       {
         name: 'Snouter',
         points: 10,
@@ -38,17 +39,17 @@ class ButtonBoard extends React.Component {
         key: 2
       },  
       {
+        name: 'Trotter',
+        points: 5,
+        image: trotter,
+        key: 1
+      },  
+      {
         name: 'Razorback',
         points: 5,
         image: razorback,
         key: 3
-      },  
-      {
-        name: 'Leaning Jowler',
-        points: 15,
-        image: leaningJowler,
-        key: 4
-      },  
+      },    
       {
         name: 'Sider (Up)',
         points: 1,
@@ -62,10 +63,24 @@ class ButtonBoard extends React.Component {
         key: 6
       }  
     ]
+    clearRoll(e){
+      if(e){
+        if(e.target !== e.currentTarget){
+          return;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      this.setState({allowAdd: false, addText: '', points: '', allowBank: true});
+      const inputs = document.querySelectorAll('input[type="radio"]');
+      inputs.forEach(input => input.checked = false);
+    }
     totalRoll(){
       const leftSelection = document.querySelector('#board-left input:checked');
       const rightSelection = document.querySelector('#board-right input:checked');
-
+      if(leftSelection || rightSelection){
+        this.setState({allowBank: false});
+      }
       if(leftSelection && rightSelection){
         if(this.props.state.players.length < 2){
           this.handleAlert();
@@ -96,14 +111,13 @@ class ButtonBoard extends React.Component {
         this.setState({allowAdd: false});
       }
     }
-    countEm(){
-      console.log(this.state.points);
+    countEm(e){
       this.props.addRoll(this.state.points);
       const bombCheck = this.state.points;
-      this.setState({allowAdd: false, addText: '', points: '', allowBank: true});
-      if(bombCheck === '💣'){ this.setState({allowBank: false})}
-      const inputs = document.querySelectorAll('input[type="radio"]');
-      inputs.forEach(input => input.checked = false);
+      if(bombCheck === '💣'){ 
+        this.setState({allowBank: false});
+      }
+      this.clearRoll();
     }
     handleBank(){
       this.props.bankPoints();
@@ -117,7 +131,7 @@ class ButtonBoard extends React.Component {
     }
     render(){
         return(
-        	<section id="ButtonBoard">
+        	<section id="ButtonBoard" onClick={this.clearRoll}>
                 <div id="board-left">
                   {this.pigs.map(pig => {
                     return <ScoreButton totalRoll={this.totalRoll} pig={pig} side="left" key={'left-' + pig.name }/>
@@ -130,8 +144,10 @@ class ButtonBoard extends React.Component {
                 </div>
                 <button id="makinBacon" onClick={this.props.makinBacon}><span role="img" aria-label="fixme">😱🥓 Makin' Bacon!</span></button>
                 <button id="bank" onClick={this.state.allowBank ? this.handleBank : this.totalRoll} className={this.state.allowBank ? '' : 'disabled'}><span role="img" aria-label="fixme">🏦 Bank!</span></button>
-                <button id="countEm" onClick={this.state.allowAdd ? this.countEm : this.totalRoll} className={this.state.allowAdd ? '' : 'disabled'}>
-                  <span className="roll-announcement">{this.state.addText ? this.state.addText : '(Enter the roll)'}</span>
+                <button id="countEm" onClick={this.state.allowAdd ? this.countEm : this.totalRoll} className={
+                  this.state.allowBank ? 'roll-again' : ''
+                }>
+                  <span className="roll-announcement">{this.state.addText ? this.state.addText : 'Pick both pigs to enter a new roll'}</span>
                   <span className="button-highlight">{this.state.points ? this.state.points : ''}</span>
                 </button>
 

@@ -178,6 +178,8 @@ class App extends Component {
         break;
       }
     }
+    const bankButton = document.querySelector('#bank');
+    bankButton.blur();
   }
   pigOut(){
     this.logUpdate(' pig-out')
@@ -196,6 +198,7 @@ class App extends Component {
       if (roller.active){
         roller.turn = 0;
         roller.banked = 0;
+        this.logUpdate(' MADE BACON!!! 😱🥓 Back to 0!!')
       }
     })
     this.updateScoreboard(rollers);
