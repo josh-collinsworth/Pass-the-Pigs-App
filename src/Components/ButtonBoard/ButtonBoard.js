@@ -74,6 +74,10 @@ class ButtonBoard extends React.Component {
       this.setState({allowAdd: false, addText: '', points: '', allowBank: true});
       const inputs = document.querySelectorAll('input[type="radio"]');
       inputs.forEach(input => input.checked = false);
+      const leftArrow = document.getElementById('board-left-arrow');
+      leftArrow.style.transform = `translateY(100vh)`;
+      const rightArrow = document.getElementById('board-right-arrow');
+      rightArrow.style.transform = `translateY(100vh)`;
     }
     totalRoll(){
       const leftSelection = document.querySelector('#board-left input:checked');
@@ -136,11 +140,13 @@ class ButtonBoard extends React.Component {
                   {this.pigs.map(pig => {
                     return <ScoreButton totalRoll={this.totalRoll} pig={pig} side="left" key={'left-' + pig.name }/>
                   })}
+                  <div id="board-left-arrow"></div>
                 </div>
                 <div id="board-right">
                   {this.pigs.map(pig => {
                     return <ScoreButton totalRoll={this.totalRoll} pig={pig} side="right" key={'right-' + pig.name }/>
                   })}
+                  <div id="board-right-arrow"></div>
                 </div>
                 <button id="makinBacon" onClick={this.props.makinBacon}><span role="img" aria-label="fixme">😱🥓 Makin' Bacon!</span></button>
                 <button id="bank" onClick={this.state.allowBank ? this.handleBank : this.totalRoll} className={this.state.allowBank ? '' : 'disabled'}><span role="img" aria-label="fixme">🏦 Bank!</span></button>

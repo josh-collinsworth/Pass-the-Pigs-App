@@ -37,7 +37,8 @@
     border-left: 1px solid #eee;
 }
 
-#ButtonBoard input[type=radio]:checked + label:after {
+/*Used to do the arrows with CSS but that was less fancy*/
+/*#ButtonBoard input[type=radio]:checked + label:after {
 	transition: var(--transition);
     content: '';
     position: absolute;
@@ -58,6 +59,28 @@
     border-right: 8px solid transparent;
     border-left: 8px solid #eee;
     left: -.4vw;
+}*/
+
+#ButtonBoard #board-left-arrow, #ButtonBoard #board-right-arrow {
+	position: absolute;
+	grid-row: 1;
+	grid-column: 1;
+	height: 0;
+	width: 0;
+	border-right: 8px solid #ddd;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid transparent;
+	right: -.5vw;
+	top: 0;
+	transition: .4s cubic-bezier(0.85,-0.28, 0.06, 1.31);
+	transform: translateY(100vh);
+}
+
+#ButtonBoard #board-right-arrow {
+	border-left: 8px solid #ddd;
+	border-right: 8px solid transparent;
+	left: -.5vw;
 }
 
 #ButtonBoard #bank, #ButtonBoard #makinBacon, #ButtonBoard #countEm {
@@ -109,11 +132,10 @@ button span.roll-announcement {
 	#board-right:before {
 	    left: -6px;
 	}
-	#ButtonBoard input[type=radio]:checked + label:after {
+	#ButtonBoard #board-left-arrow {
 	    right: -6px;
-	    top: calc(50% - 8px);
 	}
-	#ButtonBoard #board-right input[type=radio]:checked + label:after {
+	#ButtonBoard #board-right-arrow {
 	    left: -5px;
 	}
 }
