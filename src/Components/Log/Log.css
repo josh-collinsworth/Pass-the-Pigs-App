@@ -8,6 +8,8 @@
     text-align: left;
     box-sizing: border-box;
     padding: 0 1rem;
+    position: relative;
+    z-index: 7;
 }
 
 @media (max-width: 768px){

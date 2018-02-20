@@ -26,7 +26,7 @@
 #ButtonBoard input[type=radio] + label img {
 	filter: saturate(0);
 	opacity: .5;
-	transition: all .14s cubic-bezier(0.51, -0.38, 0.26, 3.01);
+	transition: all .18s cubic-bezier(0.51, -0.38, 0.26, 3.01);
 }
 
 #ButtonBoard input[type=radio]:checked + label img {
