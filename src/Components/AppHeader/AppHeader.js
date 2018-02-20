@@ -9,9 +9,12 @@ class AppHeader extends React.Component {
         this.mobileSlideToggle = this.mobileSlideToggle.bind(this);
     }
     handleNewGame(e){
+
+        console.log(this.props.players);
         this.props.toggleModal(e, 'newGameModal');
     }
     handleAddPlayer(e){
+        console.log(this.props.players);
         this.props.toggleModal(e, 'newPlayerModal');
     }
     mobileSlideToggle(){

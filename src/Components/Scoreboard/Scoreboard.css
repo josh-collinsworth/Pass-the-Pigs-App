@@ -30,10 +30,6 @@
     width: 50%;
 }
 
-#Scoreboard table tr td[data-playerid] strong:hover {
-    cursor: pointer;
-}
-
 #Scoreboard tr[data-active=true] {
     font-size: 1.2em;
     position: sticky;

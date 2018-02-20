@@ -16,7 +16,6 @@ class Modal extends React.Component {
     }
 	handleKeyDown(e){
         if (e.keyCode === 27) this.props.neverMind(e);
-        if (e.which === 13) this.handleSubmit(e);
     }	
     handleToggle(e){
         this.props.toggleModal(e, this.state.id);

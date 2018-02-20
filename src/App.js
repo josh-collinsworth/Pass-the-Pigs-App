@@ -12,24 +12,7 @@ class App extends Component {
       this.state = {
         finalRound: false,
         winner: ['', 0],
-        players: [
-        //Got a couple players ready to go for testing purposes
-        /*{
-          name: 'Biggs',
-          turn: 0,
-          banked: 0,
-          active: true,
-          id: 1,
-          ender: false
-        },
-        {
-          name: 'Wedge',
-          turn: 0,
-          banked: 0,
-          active: false,
-          id: 2,
-          ender: false
-        }*/],
+        players: [],
         round: 1
       }
       this.nextPlayer = this.nextPlayer.bind(this);
@@ -49,7 +32,6 @@ class App extends Component {
     this.setState({players: [], finalRound: false, winner: ['', 0], round: 1});
     const Sidebar = document.querySelector('.App-sidebar');
     Sidebar.classList.add('slide-in');
-    this.logUpdate('A NEW GAME STARTS NOW!', false);
   }
 
   neverMind(e){
@@ -94,8 +76,7 @@ class App extends Component {
     this.toggleModal(e, modal);
     newPlayerName.value = '';
     const newPlayerButton = document.querySelector('#Scoreboard button');
-    newPlayerButton.focus();        
-    this.logUpdate(`${newPlayer.name} has joined the game!`, false);
+    newPlayerButton.focus();
   }
 
   toggleModal(e, modal, etc){
@@ -110,14 +91,9 @@ class App extends Component {
     const modalHolder = document.getElementById('modal-holder');
     const curtain = document.getElementById('curtain');
     const showElements = [modalToToggle, curtain, modalHolder];
-    showElements.forEach(element => {
+    showElements.forEach(element =>{
       if (element.classList.contains('hidden')){
         element.classList.remove('hidden');
-        if(modal === 'changePlayerNameModal'){
-          const nameInput = document.querySelector('#changePlayerNameModal input');
-          nameInput.value = etc[0];
-          nameInput.id = etc[1];
-        }
         const modalInput = (modal === 'addAnotherPlayerModal') ? document.querySelector(`#${modal} button`) : document.querySelector(`#${modal} input`);
         modalInput.focus();
       } else {
@@ -127,7 +103,6 @@ class App extends Component {
       }
     });
   }
-
   nextPlayer(){
     let rollers = this.state.players;
     for(var i=0; i<rollers.length; i++){
@@ -151,6 +126,7 @@ class App extends Component {
           this.updateScoreboard(rollers);
           if(rollers[i+1].active && rollers[i+1].ender){
             this.logUpdate(' WINS!');            
+            //No updateScoreboard needed here? ¯\_(ツ)_/¯
             this.toggleModal('', 'theEndModal', this.endGame());
             return;
           } 
@@ -159,7 +135,6 @@ class App extends Component {
       }
     }
   }
-
   endGame(){
     var finalScores = [];
     this.state.players.forEach(player => {
@@ -169,7 +144,6 @@ class App extends Component {
     const winner = findWinner[0];
     this.setState({winner: winner});
   }
-
   addRoll(points){
     if(points === '💣'){
       this.pigOut();
@@ -183,9 +157,8 @@ class App extends Component {
         roller.turn += points;
         this.updateScoreboard(rollers);
       }
-    });
+    })
   }
-
   bankPoints(){
     this.logUpdate(' banked!')
     let rollers = this.state.players;
@@ -208,7 +181,6 @@ class App extends Component {
     const bankButton = document.querySelector('#bank');
     bankButton.blur();
   }
-
   pigOut(){
     this.logUpdate(' pig-out')
     let rollers = this.state.players;
@@ -220,34 +192,29 @@ class App extends Component {
     this.updateScoreboard(rollers);
     this.nextPlayer();
   }
-
   makinBacon(){
     let rollers = this.state.players;
     rollers.forEach(roller => {
       if (roller.active){
         roller.turn = 0;
         roller.banked = 0;
-        this.logUpdate(' MADE BACON!!! 😱🥓 Back to 0!')
+        this.logUpdate(' MADE BACON!!! 😱🥓 Back to 0!!')
       }
     })
     this.updateScoreboard(rollers);
     this.nextPlayer();
   }
-
   updateScoreboard(obj){
     this.setState({ players: obj });
     this.logUpdate();
   }
-
-  logUpdate(message, inclActiveName = true){
+  logUpdate(message){
     const Log = document.getElementById('Log');
     const rollers = this.state.players;
     rollers.forEach(player => {
       if(player.active){
-        if(message && inclActiveName){
+        if(message){
           Log.innerHTML += `========== ${player.name}${message} ==========<br>`;
-        } else if (message){
-          Log.innerHTML += `========== ${message} ==========<br>`;        
         } else {
           Log.innerHTML += `${player.name} --- banked: ${player.banked} | turn: ${player.turn}<br>`; 
         }
@@ -255,11 +222,10 @@ class App extends Component {
     })
     Log.scrollTop = Log.scrollHeight;
   }
-
   render() {
     return (
       <div className="App">
-        <Modals toggleModal={this.toggleModal} newPlayerSubmit={this.newPlayerSubmit} endGame={this.endGame} state={this.state} newGame={this.newGame} neverMind={this.neverMind} addPlayer={this.addPlayer} updateScoreboard={this.updateScoreboard} logUpdate={this.logUpdate}/>
+        <Modals toggleModal={this.toggleModal} newPlayerSubmit={this.newPlayerSubmit} endGame={this.endGame} state={this.state} newGame={this.newGame} neverMind={this.neverMind} addPlayer={this.addPlayer}/>
         <AppHeader players={this.state.players} toggleModal={this.toggleModal} newGame={this.newGame}/>
         <Sidebar players={this.state.players} nextPlayer={this.nextPlayer} toggleModal={this.toggleModal}/>
         <ButtonBoard state={this.state} addRoll={this.addRoll} bankPoints={this.bankPoints} pigOut={this.pigOut} makinBacon={this.makinBacon} toggleModal={this.toggleModal}/>
