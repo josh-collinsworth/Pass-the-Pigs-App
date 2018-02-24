@@ -2,10 +2,9 @@ A fairly simple (to use) app for scorekeeping with the dice game "Pass the Pigs.
 
 I own absolutely no claim or copyright to Pass the Pigs. That's all Hasbro, Winning Moves and/or David Moffat Enterprises, as far as I know. I just made the app. Thus, I can't really license this, so feel free to use this for fun, bu just don't use this without giving credit, please.
 
-Version 1.3:
-• NEW: you can now rename players by clicking on their name in the scoreboard! (Not the header, though, because that's a whole other buncha hogwash. Maybe someday.)
-• Switched the arrows that highlight the selected pigs from CSS to JavaScript to enable some very neat and entirely unneccessary animation
-• Yet further improved logging (more events trigger the log, so you can always trace exactly where your pig rolling decisions went horribly wrong)
+Version 1.4:
+• Now you'll be warned before navigating away or refreshing the page so you don't accidentally erase all your hard-earned pig points (so you'll have more opportunities to do that on your own with bad rolls and questionable decisions).
+• Fixed that weird error where the arrows went beyond the bottom of the page and caused scrolling. They're back in their pen now, and they'll stay there.
 
 TODO: 
 
@@ -13,4 +12,3 @@ TODO:
 [ ] Fix the post-game re-win
 [ ] Fix single player 
 [ ] Maybe add an undo button
-[x] Add ability to rename players --Added in v 1.3!

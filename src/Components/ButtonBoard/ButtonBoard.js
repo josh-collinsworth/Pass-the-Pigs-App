@@ -75,9 +75,9 @@ class ButtonBoard extends React.Component {
       const inputs = document.querySelectorAll('input[type="radio"]');
       inputs.forEach(input => input.checked = false);
       const leftArrow = document.getElementById('board-left-arrow');
-      leftArrow.style.transform = `translateY(100vh)`;
+      leftArrow.style.transform = `translateY(calc(100vh - 160px))`;
       const rightArrow = document.getElementById('board-right-arrow');
-      rightArrow.style.transform = `translateY(100vh)`;
+      rightArrow.style.transform = `translateY(calc(100vh - 160px))`;
     }
     totalRoll(){
       const leftSelection = document.querySelector('#board-left input:checked');

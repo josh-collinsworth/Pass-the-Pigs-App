@@ -43,6 +43,7 @@ class App extends Component {
       this.toggleModal = this.toggleModal.bind(this);
       this.newGame = this.newGame.bind(this);
       this.endGame = this.endGame.bind(this);
+      this.onUnload = this.onUnload.bind(this);
   }
   newGame(e){
     e.preventDefault();
@@ -50,6 +51,19 @@ class App extends Component {
     const Sidebar = document.querySelector('.App-sidebar');
     Sidebar.classList.add('slide-in');
     this.logUpdate('A NEW GAME STARTS NOW!', false);
+  }
+
+  onUnload(event) { // the method that will be used for both add and remove event
+    console.log("hellooww")
+    event.returnValue = "Hellooww"
+  }
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", this.onUnload)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", this.onUnload)
   }
 
   neverMind(e){

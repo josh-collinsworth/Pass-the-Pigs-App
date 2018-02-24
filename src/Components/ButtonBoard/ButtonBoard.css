@@ -37,30 +37,6 @@
     border-left: 1px solid #eee;
 }
 
-/*Used to do the arrows with CSS but that was less fancy*/
-/*#ButtonBoard input[type=radio]:checked + label:after {
-	transition: var(--transition);
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    background: transparent;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid transparent;
-    border-right: 8px solid #eee;
-    right: -.5vw;
-    top: calc(50% - 8px);
-}
-
-#ButtonBoard #board-right input[type=radio]:checked + label:after {
-	border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-left: 8px solid #eee;
-    left: -.4vw;
-}*/
-
 #ButtonBoard #board-left-arrow, #ButtonBoard #board-right-arrow {
 	position: absolute;
 	grid-row: 1;
@@ -74,7 +50,7 @@
 	right: -.5vw;
 	top: 0;
 	transition: .4s cubic-bezier(0.85,-0.28, 0.06, 1.31);
-	transform: translateY(100vh);
+	transform: translateY(calc(100vh - 160px));
 }
 
 #ButtonBoard #board-right-arrow {
