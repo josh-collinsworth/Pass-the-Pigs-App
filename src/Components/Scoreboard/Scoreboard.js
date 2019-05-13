@@ -2,15 +2,10 @@ import React from 'react';
 import './Scoreboard.css';
 
 class Scoreboard extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleToggle = this.handleToggle.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleToggle(e){
+    handleToggle = (e) => {
         this.props.toggleModal(e, 'newPlayerModal');
     }
-    handleChange(e){
+    handleChange = (e) => {
         const playerID = e.target.parentElement.attributes[0].value;
         const playerName = e.target.textContent;
         this.props.toggleModal(e, 'changePlayerNameModal', [playerName, playerID]);

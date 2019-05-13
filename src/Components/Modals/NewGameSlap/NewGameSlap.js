@@ -7,13 +7,11 @@ class NewGameSlap extends Modal {
         this.state = {
             id: 'newGameSlapModal'
         }
-        this.handleAdd = this.handleAdd.bind(this);
-        this.handleNewGame = this.handleNewGame.bind(this);
     }
-    handleAdd(e){
+    handleAdd = (e) => {
         this.props.toggleModal(e, 'newGameSlapModal');
     }   
-    handleNewGame(e){
+    handleNewGame = (e) => {
         this.props.toggleModal(e, 'newGameSlapModal');
         this.props.toggleModal(e, 'newGameModal');
     }

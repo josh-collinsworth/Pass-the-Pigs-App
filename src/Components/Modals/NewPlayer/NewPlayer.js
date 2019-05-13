@@ -10,7 +10,7 @@ class NewPlayer extends Modal {
             id: 'newPlayerModal'
         }
 	}
-    handleSubmit(e){
+    handleSubmit  = (e) => {
         this.props.newPlayerSubmit(e, 'newPlayerModal');
         this.props.toggleModal(e, 'addAnotherPlayerModal');
     }

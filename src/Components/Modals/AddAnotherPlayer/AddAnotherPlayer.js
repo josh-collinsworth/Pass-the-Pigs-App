@@ -7,14 +7,12 @@ class AddAnotherPlayer extends Modal {
         this.state = {
             id: 'addAnotherPlayerModal'
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleAdd = this.handleAdd.bind(this);
     }
-    handleAdd(e){
+    handleAdd = (e) => {
 		this.props.toggleModal(e, 'addAnotherPlayerModal');
         this.props.toggleModal(e, 'newPlayerModal');
     }   
-    handleSubmit(e){
+    handleSubmit = (e) => {
         this.props.toggleModal(e, this.state.id);
         const appSidebar = document.querySelector('.App-sidebar');
         if (appSidebar.classList.contains('slide-in')) appSidebar.classList.remove('slide-in');

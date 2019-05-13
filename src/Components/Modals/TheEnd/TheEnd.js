@@ -1,19 +1,13 @@
 import React from 'react';
 
 class NewPlayer extends React.Component {
-	constructor(props){
-		super(props);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.handleToggle = this.handleToggle.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-	}
-    handleKeyDown(e){
+    handleKeyDown = (e) => {
         if (e.keyCode === 27) this.props.toggleModal(e, 'theEndModal');
     }
-    handleToggle(e){
+    handleToggle = (e) => {
         this.props.toggleModal(e, 'theEndModal');
     }
-    handleSubmit(e){
+    handleSubmit = (e) => {
         this.props.toggleModal(e, 'theEndModal');
     }
     render(){

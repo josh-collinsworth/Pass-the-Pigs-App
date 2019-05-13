@@ -8,7 +8,7 @@ class ChangePlayerName extends Modal {
             id: 'changePlayerNameModal'
         }
 	}
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault();
     	const newName = document.querySelector('#changePlayerNameModal input').value;
     	const playerID = document.querySelector('#changePlayerNameModal input').id;

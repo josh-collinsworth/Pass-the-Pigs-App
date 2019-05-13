@@ -7,9 +7,8 @@ class AddPlayers extends Modal {
         this.state = {
             id: 'addPlayersModal'
         }
-        this.handleAdd = this.handleAdd.bind(this);
     }
-    handleAdd(e){
+    handleAdd = (e) => {
         this.props.toggleModal(e, 'addPlayersModal');
         this.props.toggleModal(e, 'newPlayerModal');
     }   

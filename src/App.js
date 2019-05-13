@@ -32,20 +32,8 @@ class App extends Component {
         }*/],
         round: 1
       }
-      this.nextPlayer = this.nextPlayer.bind(this);
-      this.addRoll = this.addRoll.bind(this);
-      this.bankPoints = this.bankPoints.bind(this);
-      this.pigOut = this.pigOut.bind(this);
-      this.makinBacon = this.makinBacon.bind(this);
-      this.updateScoreboard = this.updateScoreboard.bind(this);
-      this.logUpdate = this.logUpdate.bind(this);
-      this.newPlayerSubmit = this.newPlayerSubmit.bind(this);
-      this.toggleModal = this.toggleModal.bind(this);
-      this.newGame = this.newGame.bind(this);
-      this.endGame = this.endGame.bind(this);
-      this.onUnload = this.onUnload.bind(this);
   }
-  newGame(e){
+  newGame = (e) =>{
     e.preventDefault();
     this.setState({players: [], finalRound: false, winner: ['', 0], round: 1});
     const Sidebar = document.querySelector('.App-sidebar');
@@ -53,7 +41,7 @@ class App extends Component {
     this.logUpdate('A NEW GAME STARTS NOW!', false);
   }
 
-  onUnload(event) { // the method that will be used for both add and remove event
+  onUnload = (event) => { // the method that will be used for both add and remove event
     console.log("hellooww")
     event.returnValue = "Hellooww"
   }
@@ -66,7 +54,7 @@ class App extends Component {
     window.removeEventListener("beforeunload", this.onUnload)
   }
 
-  neverMind(e){
+  neverMind = (e) => {
     if(e){
       e.preventDefault();
       e.stopPropagation();
@@ -85,7 +73,7 @@ class App extends Component {
     countEm.focus();
   }
 
-  newPlayerSubmit(e, modal){
+  newPlayerSubmit = (e, modal) => {
     e.preventDefault();
     const newPlayerName = document.getElementById('newPlayer');
     if (!newPlayerName.value){
@@ -112,7 +100,7 @@ class App extends Component {
     this.logUpdate(`${newPlayer.name} has joined the game!`, false);
   }
 
-  toggleModal(e, modal, etc){
+  toggleModal = (e, modal, etc) => {
     if(e){
       e.preventDefault();
       e.stopPropagation();
@@ -142,7 +130,7 @@ class App extends Component {
     });
   }
 
-  nextPlayer(){
+  nextPlayer = () => {
     let rollers = this.state.players;
     for(var i=0; i<rollers.length; i++){
       if(rollers[i].active){
@@ -174,7 +162,7 @@ class App extends Component {
     }
   }
 
-  endGame(){
+  endGame = () => {
     var finalScores = [];
     this.state.players.forEach(player => {
       finalScores.push([player.name, player.banked]);
@@ -184,7 +172,7 @@ class App extends Component {
     this.setState({winner: winner});
   }
 
-  addRoll(points){
+  addRoll = (points) => {
     if(points === '💣'){
       this.pigOut();
       return; 
@@ -200,7 +188,7 @@ class App extends Component {
     });
   }
 
-  bankPoints(){
+  bankPoints = () => {
     this.logUpdate(' banked!')
     let rollers = this.state.players;
     for(var roller of rollers) {
@@ -223,7 +211,7 @@ class App extends Component {
     bankButton.blur();
   }
 
-  pigOut(){
+  pigOut = () => {
     this.logUpdate(' pig-out')
     let rollers = this.state.players;
     rollers.forEach(roller => {
@@ -235,7 +223,7 @@ class App extends Component {
     this.nextPlayer();
   }
 
-  makinBacon(){
+  makinBacon = () => {
     let rollers = this.state.players;
     rollers.forEach(roller => {
       if (roller.active){
@@ -248,12 +236,12 @@ class App extends Component {
     this.nextPlayer();
   }
 
-  updateScoreboard(obj){
+  updateScoreboard = (obj) => {
     this.setState({ players: obj });
     this.logUpdate();
   }
 
-  logUpdate(message, inclActiveName = true){
+  logUpdate = (message, inclActiveName = true) => {
     const Log = document.getElementById('Log');
     const rollers = this.state.players;
     rollers.forEach(player => {

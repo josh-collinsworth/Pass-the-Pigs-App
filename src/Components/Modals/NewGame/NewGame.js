@@ -7,9 +7,8 @@ class NewGame extends Modal {
         this.state = {
             id: 'newGameModal'
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
 	}
-    handleSubmit(e){
+    handleSubmit = (e) => {
         this.props.newGame(e);
         this.handleToggle(e);
     }

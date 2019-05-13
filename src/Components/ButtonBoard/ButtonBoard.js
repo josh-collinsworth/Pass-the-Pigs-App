@@ -18,12 +18,6 @@ class ButtonBoard extends React.Component {
           addText: '',
           points: ''
         }
-        this.countEm = this.countEm.bind(this);
-        this.totalRoll = this.totalRoll.bind(this);
-        this.handleBank = this.handleBank.bind(this);
-        this.handleAlert = this.handleAlert.bind(this);
-        this.handleNewGameSlap = this.handleNewGameSlap.bind(this);
-        this.clearRoll = this.clearRoll.bind(this);
     }
     pigs = [
       {
@@ -63,7 +57,7 @@ class ButtonBoard extends React.Component {
         key: 6
       }  
     ]
-    clearRoll(e){
+    clearRoll = (e) => {
       if(e){
         if(e.target !== e.currentTarget){
           return;
@@ -79,7 +73,7 @@ class ButtonBoard extends React.Component {
       const rightArrow = document.getElementById('board-right-arrow');
       rightArrow.style.transform = `translateY(calc(100vh - 160px))`;
     }
-    totalRoll(){
+    totalRoll = () => {
       const leftSelection = document.querySelector('#board-left input:checked');
       const rightSelection = document.querySelector('#board-right input:checked');
       if(leftSelection || rightSelection){
@@ -115,7 +109,7 @@ class ButtonBoard extends React.Component {
         this.setState({allowAdd: false});
       }
     }
-    countEm(e){
+    countEm = (e) => {
       this.props.addRoll(this.state.points);
       const bombCheck = this.state.points;
       if(bombCheck === '💣'){ 
@@ -123,14 +117,14 @@ class ButtonBoard extends React.Component {
       }
       this.clearRoll();
     }
-    handleBank(){
+    handleBank = () => {
       this.props.bankPoints();
       this.setState({allowBank: false});
     }
-    handleAlert(e){
+    handleAlert = (e) => {
       this.props.toggleModal(e, 'addPlayersModal');
     }
-    handleNewGameSlap(e){
+    handleNewGameSlap = (e) => {
       this.props.toggleModal(e, 'newGameSlapModal');
     }
     render(){

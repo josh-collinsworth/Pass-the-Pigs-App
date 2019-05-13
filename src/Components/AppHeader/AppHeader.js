@@ -2,19 +2,13 @@ import React from 'react';
 import './AppHeader.css'
 
 class AppHeader extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleNewGame = this.handleNewGame.bind(this);
-        this.handleAddPlayer = this.handleAddPlayer.bind(this);
-        this.mobileSlideToggle = this.mobileSlideToggle.bind(this);
-    }
-    handleNewGame(e){
+    handleNewGame = (e) => {
         this.props.toggleModal(e, 'newGameModal');
     }
-    handleAddPlayer(e){
+    handleAddPlayer = (e) => {
         this.props.toggleModal(e, 'newPlayerModal');
     }
-    mobileSlideToggle(){
+    mobileSlideToggle = () => {
         const appSidebar = document.querySelector('.App-sidebar');
         if(appSidebar.classList.contains('slide-in')){
             appSidebar.classList.remove('slide-in');

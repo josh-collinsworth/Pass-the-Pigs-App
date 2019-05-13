@@ -2,11 +2,7 @@ import React from 'react';
 import './ScoreButton.css';
 
 class ScoreButton extends React.Component {
-	constructor(props){
-		super(props);
-		this.changeArrow = this.changeArrow.bind(this);
-	}
-	changeArrow(e){
+	changeArrow = (e) => {
 		const pig = e.target;
 		const pigCoords = pig.getBoundingClientRect();
 		const headerHeight = document.querySelector('header').offsetHeight;
