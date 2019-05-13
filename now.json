@@ -1,0 +1,18 @@
+{
+    "name": "Pass the Pigs",
+    "version": 2,
+    "alias": ["passthepigs.now.sh"],
+    "github": {
+        "enabled": true,
+        "autoAlias": true
+    },
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@now/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ]
+}
