@@ -39,6 +39,7 @@ class App extends Component {
     const Sidebar = document.querySelector('.App-sidebar');
     Sidebar.classList.add('slide-in');
     this.logUpdate('A NEW GAME STARTS NOW!', false);
+    this.toggleModal(null, 'addPlayersModal');
   }
 
   onUnload = (event) => { // the method that will be used for both add and remove event
@@ -47,7 +48,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("beforeunload", this.onUnload)
+    window.addEventListener("beforeunload", this.onUnload);
+    this.toggleModal(null, 'addPlayersModal');
   }
 
   componentWillUnmount() {
@@ -120,7 +122,7 @@ class App extends Component {
           nameInput.value = etc[0];
           nameInput.id = etc[1];
         }
-        const modalInput = (modal === 'addAnotherPlayerModal') ? document.querySelector(`#${modal} button`) : document.querySelector(`#${modal} input`);
+        const modalInput = (modal === 'addAnotherPlayerModal' || modal === 'addPlayersModal') ? document.querySelector(`#${modal} button`) : document.querySelector(`#${modal} input`);
         modalInput.focus();
       } else {
         element.classList.add('hidden');

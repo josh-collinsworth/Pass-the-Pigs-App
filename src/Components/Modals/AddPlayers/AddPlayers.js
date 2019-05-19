@@ -18,7 +18,7 @@ class AddPlayers extends Modal {
     			<p><strong>This game is best played with at least 2 players</strong><i> (and this app doesn't really work very well with fewer).</i> Add some players to get started!</p>
                 <div className="button-group">
         			<input type="submit" value="Whatever" onKeyDown={this.handleKeyDown}/>
-                    <button onClick={this.handleAdd}>Add Player</button>
+                    <button id="addSomePlayers" onClick={this.handleAdd}>Add Player</button>
                 </div>
     		</form>
         );
